@@ -35,11 +35,12 @@ body{
     background-size: cover; */
 
     background: var(--bg-url) no-repeat top center/cover; 
+    height: 100vh; /* para esticar a imagem do body*/
 }
 body *{
     font-family: 'Inter', sans-serif;
     color: var(--text-color);
-    height: 100vh; /* para esticar a imagem do body*/
+   
 }
 #container{
     width: 100%;
@@ -74,11 +75,24 @@ body *{
     left: 0;
     z-index: 1; /* coloca uma camada para trás*/
     transform: translateY(-50%); 
+
+    animation: slide-back 0.2s; /*sobra ao redor do botão*/
 }
 .light #switch button{
-    right:0px;
-    left: initial; /* left volta para sua maneira inicial. Movimento do botão*/
+    
+    animation: slide-in .4s forwards /*forwards mantém as propriedades do slide-in*/; /*nome lá do keyframes*/
+    
+    
+    /*right:0px;
+    left: initial;*/ /* left volta para sua maneira inicial. Movimento do botão*/
 }
+
+#switch button:hover{
+    outline: 8px solid var(--highlight-color);
+}
+
+
+
 #switch{
     position: relative; /* vai conseguir mexer no button absoluto dentro da caixa*/
     width: 64px;
@@ -170,11 +184,26 @@ footer{
     }
 
     .light{
-        --bg-url: url(./bg-desktop-light);
+        --bg-url: url(./bg-desktop-light.jpg);
     }
-    
+}
 
 
+/* animação */
+@keyframes slide-in /*pode ser qualquer nome dps do keyframes*/{
+   from {
+    left: 0;
+   }
+   to {
+    left: 50%;
+   }
+}
 
-
+@keyframes slide-back{
+    from {
+        left: 50%;
+       }
+       to {
+        left: 0;
+       }
 }
